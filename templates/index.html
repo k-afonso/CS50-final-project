@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+
+{% block title %}Landing Page{% endblock %}
+
+{% block main %}
+    <div class="index" style="padding-top: 1rem!important;">
+        <!--Pay attention to save your images in the static folder or they won't display-->
+        <img src="static/banner_index.jpg" alt="banner" usemap="#banner" style="border:none;
+        width:100%; padding-top: 0px;">
+        <map name="banner">
+            <area shape="rect" coords="227,200,380,370" alt="lend" title="lend" href="/lend">
+            <area shape="circle" coords="319,96,73" alt="gear" title="sign-in" href="/login">
+        </map>
+
+        <P style="margin-top: 40px;"> <b>iShare</b> is a non profit organization with the goal of making it easy for people
+            to share their unused items (devices, tools, etc.) with people needing it for a short period of time.
+        </P>
+        </br>
+        <p><b>Why buy expensive tools that you will only need once when you can borrow them?</b></p>
+        </br>
+
+        <div style="display:flex; flex-wrap: wrap; padding-left: 200px; padding-right: 200px; margin-top: 20px">
+            <div class="flex-container-col" style="width:33.3%">
+                <div>
+                    <p>Find what you need here:</p>
+                </div>
+                <div>
+                    <a href="/borrow"><button class="btn btn-primary" style="width: 200px"> BORROW</button></a>
+                </div>
+            </div>
+            <div class="flex-container-col" style="width:33.3%">
+                <div>
+                    <p>Lend your items here:</p>
+                </div>
+                <div>
+                    <a href="/lend"><button class="btn btn-primary" style="width: 200px">LEND</button></a>
+                </div>
+            </div>
+            <div class="flex-container-col" style="width:33.3%">
+                <div>
+                    <p>Make a donation <span style="color:red;">(Comming soon)</span></p>
+                </div>
+                <div>
+                    <button class="btn btn-primary" style="width: 200px">DONATE</button>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--Displaying current listings-->
+        <div style="text-align:center; margin:40px;">
+            <div style="background-color: #c4c4c4; padding: 5px; border-radius: 5px;">
+                <h2>Top items this week</h2>
+            </div>
+
+            <!-- Dividing page 50/50 horizontal -->
+            <div class="flex-container-row">
+            {% for item in listing %}
+                <!-- product images on the left side -->
+                <div class="flex-container-col">
+                    <div>
+                        <img src="{{ item['image'] }}" alt="Product image" width="200">
+                    </div>
+                    <div>
+                        <h4>{{ item["title"] }}</h4>
+                        <form action="/product-page" method="POST">
+                            <input name="product_id" type="hidden" value="{{ item['product_id'] }}">
+                            <button type="Submit" class="btn btn-primary">Borrow</button>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

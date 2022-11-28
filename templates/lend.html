@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block title %}Lend{% endblock %}
+
+{% block main %}
+    <h2 style="margin-top: 20px;">LIST THE ITEMS YOU WANT TO LEND</h2>
+
+    <form action="/lend" method="POST">
+        <div class="flex-container-row-2" style="width: 600px;">
+            <div class="flex-container-col-2" style="text-align: left;">
+                <div>
+                    <label for="title">Title:</label>
+                    <br>
+                    <input autofocus id="title" name="title" placeholder="Title" required
+                    type="text" style="width:90%;">
+                </div>
+                <div style="margin-top: 20px;">
+                    <label for="description">Description:</label>
+                    <br>
+                    <textarea id="description" name="description" placeholder="Description" required rows="3" cols="30"></textarea>
+                </div>
+            </div>
+
+            <div class="flex-container-col-2">
+                <div style="text-align: left;">
+                    <label for="date">Available on:</label>
+                    </br>
+                    <input autofocus id="date" name="date" placeholder="Available date" required type="date">
+                </div>
+                <div style="text-align: left; margin-top: 20px;">
+                    <label for="img">Image:</label>
+                    </br>
+                    <input type="file" id="img" name="image" accept="image/*">
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:150px;font-weight:bold; margin-top: 20px;">
+            List Item</button>
+    </form>
+
+    <!-- Showing user's listed items -->
+    <div>
+        {% if listing %}
+        <h2 style="margin-top: 30px; margin-bottom: 15px;">My listed items</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Product Title</th>
+                    <th>Available</th>
+                    <th>Returned</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in listing %}
+                <tr>
+                    <td>{{ item["title"] }}</td>
+                    <td>{{ item["available"] }}</td>
+                    {% if item["available"] == "No" %}
+                    <td>
+                        <form action="/lend" method="POST">
+                            <input type="hidden" name="product_id" value="{{ item['product_id'] }}">
+                            <input type="hidden" name="available" value="Yes">
+                            <button type="submit" title="Click here if the borrower has returned the item"
+                                class="btn btn-success">Mark item as returned</button>
+                        </form>
+                    </td>
+                    {% else %}
+                    <td>
+                        <form action="/lend" method="POST">
+                            <input type="hidden" name="product_id" value="{{ item['product_id'] }}">
+                            <input type="hidden" name="available" value="No">
+                            <button type="submit" title="Click here if can't borrow this item right now"
+                                class="btn btn-danger">Mark item unavailable</button>
+                        </form>
+                    </td>
+                    {% endif%}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+
+{% endblock%}

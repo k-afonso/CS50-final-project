@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}Product Page{% endblock %}
+
+{% block main %}
+
+{% for item in listing %}
+    <!-- Dividing page 50/50 horizontal -->
+    <div class="flex-container">
+        <!-- product images on the left side -->
+        <div>
+            <img src="{{ item['image'] }}" alt="Product image" style="max-width: 80%;
+                border-radius: 5px; border-style: groove; margin: 20px;">
+        </div>
+        <!-- Product details + borrow on the right -->
+        <div>
+            <h3>{{ item["title"] }}</h3>
+            <p>{{ item["description"] }}</p>
+            <!-- Borrow button -->
+            {% if item["available"] == "No" %}
+                <p style="color:red;">- Item already borrowed -</p>
+                <button class="btn btn-primary">Notify me when returned</button>
+            {% else %}
+                <form action="/borrow" method="POST">
+                    <input hidden name="product_id" value='{{ item["product_id"] }}'>
+                    <button type="submit" class="btn btn-primary">Borrow</button>
+                </form>
+            {% endif%}
+        </div>
+    </div>
+{% endfor%}
+{% endblock %}

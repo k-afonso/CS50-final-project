@@ -1,0 +1,109 @@
+
+img {
+    max-width: 100%;
+}
+
+/* Product Page Styling */
+.flex-container {
+    display: flex;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+.flex-container div {
+    width: 50%;
+    margin-top: auto;
+    margin-bottom: auto;
+    text-align: left;
+}
+
+/* Index style */
+.flex-container-row {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.flex-container-col {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 10px;
+}
+
+.index {
+    text-align: center;
+    margin-top: 0px;
+}
+
+.index img {
+    max-width: 100%;
+    border-radius: 5px;
+    border-style: groove;
+}
+
+.index > p {
+    font-size: 18px;
+    text-align: center;
+    width: 70%;
+    margin: auto;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+
+th {
+    font-weight: bold;
+    text-align: center;
+    background-color: #c4c4c4;
+    padding: 5px;
+    width: 200px;
+    margin: 5px;
+    border: 1px solid black;
+}
+
+td {
+    border: 1px solid black;
+}
+
+/* Lend page */
+
+.flex-container-col-2 {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-top: 10px;
+}
+
+.flex-container-row-2 {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    text-align: center;
+    max-width: 800px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Borrow page */
+
+.flex-container-col-3 {
+    display: flex;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+

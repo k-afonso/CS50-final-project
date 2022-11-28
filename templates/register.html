@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block main %}
+
+    <h1 style="margin-top:20px;">Create Your iShare account</h1>
+    <p>Create an account to have full access to iShare services</p>
+
+    <form action="/register" method="POST">
+        <input type="text" required autofocus name="username" placeholder="Username">
+        <input type="password" required name="password" placeholder="Password">
+        <input type="password" required name="password2" placeholder="Confirm Password">
+        <button type="submit" class="btn btn-primary">Register</button>
+    </form>
+
+{% endblock %}
+
+

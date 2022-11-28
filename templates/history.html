@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}history{% endblock %}
+
+{% block main %}
+    <h3 style="margin-top: 20px;">Your History</h3>
+    <!-- If the user has transactions, display a table -->
+    {% if listing %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Item</td>
+                    <th>Action</td>
+                    <th>See Item Page</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in listing %}
+                <tr>
+                    <td>{{ item["title"] }}</td>
+                    <td>{{ item["type"] }}</td>
+                    <td>
+                        <form action="/product-page" method="POST">
+                            <input type="hidden" name="product_id" value="{{ item['product_id'] }}">
+                            <button type="submit" class="btn btn-primary">View Item</button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    <!-- User has no transactions yet -->
+    {% else %}
+    <p>You have activities recorded. Click <a href="/lend">here</a> to list an item or
+        <a href="/borrow">here</a> to borrow an item.
+    </p>
+    {% endif%}
+
+{% endblock %}

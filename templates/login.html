@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block main %}
+
+    <h1 style="margin-top:20px;">Login</h1>
+
+    <form method="POST" style="margin-bottom:20px;">
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password" placeholder="Password">
+        <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+
+{% endblock %}

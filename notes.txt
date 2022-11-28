@@ -1,0 +1,22 @@
+DELETE THIS FILE BEFORE SUBMITION
+
+Users:
+    Hannah
+    Paul
+    Mark
+    Rebecca
+
+Tables
+    transaction: on the type it can be listed, borrowed, removed.
+
+Item images:
+    I really wanted to create a way for users to upload images using input type=file, then I would
+    take the image and store it locally or on a sql table. It turns out that this is way more complicated
+    then I thougth. This is something that I will might add in the future once I feel more comfortable.
+    For now, I will still use a sql db to store each image path.
+
+
+Cool things to add:
+    - Sort listed items by category (Garden, construction, cleaning, etc.)
+    - Add collect and return date. This way you can tell when the item will be available again
+
